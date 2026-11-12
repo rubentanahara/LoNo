@@ -137,11 +137,11 @@ A task or phase that fails any item is not done. Cut scope before relaxing this 
 ### Phase 1 — Domain core (TDD)
 **Goal:** note rules implemented and tested, with no IO.
 **Work:**
-- [ ] `Note` type: id, title, body (structured document tree), created_at, updated_at.
-  - [ ] Write failing constructor test.
-  - [ ] Add `NoteId` newtype (UUID).
-  - [ ] Implement `Note` with injected clock for timestamps.
-  - [ ] *Check:* constructor tests; failing test seen before code.
+- [x] `Note` type: id, title, body (structured document tree), created_at, updated_at.
+  - [x] Write failing constructor test.
+  - [x] Add `NoteId` newtype (UUID).
+  - [x] Implement `Note` with injected clock for timestamps.
+  - [x] *Check:* constructor tests; failing test seen before code.
 - [ ] Document model: blocks (paragraph, heading, list, quote, code, image, embed) and inline marks (bold, italic, link, code). Versioned JSON serialization.
   - [ ] Define `Block` and `Inline` enums with marks.
   - [ ] Add `schema_version` field to the serialized root.

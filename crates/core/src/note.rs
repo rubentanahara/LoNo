@@ -1,3 +1,50 @@
+use time::OffsetDateTime;
+use uuid::Uuid;
+
+pub trait Clock {
+    fn now(&self) -> OffsetDateTime;
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub struct NoteId(Uuid);
+
+impl NoteId {
+    pub fn new() -> Self {
+        Self(Uuid::new_v4())
+    }
+}
+
+impl Default for NoteId {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Document;
+
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct Note {
+    pub id: NoteId,
+    pub title: String,
+    pub body: Document,
+    pub created_at: OffsetDateTime,
+    pub updated_at: OffsetDateTime,
+}
+
+impl Note {
+    pub fn new(title: impl Into<String>, clock: &impl Clock) -> Self {
+        let now = clock.now();
+        Self {
+            id: NoteId::new(),
+            title: title.into(),
+            body: Document,
+            created_at: now,
+            updated_at: now,
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -17,7 +64,7 @@ mod tests {
         let note = Note::new("Groceries", &FixedClock(now));
 
         assert_eq!(note.title, "Groceries");
-        assert_eq!(note.body, Document::default());
+        assert_eq!(note.body, Document);
         assert_eq!(note.created_at, now);
         assert_eq!(note.updated_at, now);
     }
