@@ -7,3 +7,6 @@ lint:
 
 run:
     cargo run -p lono-app
+
+setup:
+    lefthook install

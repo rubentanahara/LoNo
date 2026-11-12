@@ -1,0 +1,10 @@
+pre-commit:
+  commands:
+    fmt:
+      glob: "*.rs"
+      run: cargo fmt --check
+
+commit-msg:
+  commands:
+    conventional:
+      run: cog verify --file {1}
