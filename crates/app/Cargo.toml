@@ -1,0 +1,7 @@
+[package]
+name = "lono-app"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+lono-storage.workspace = true

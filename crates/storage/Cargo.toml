@@ -1,0 +1,7 @@
+[package]
+name = "lono-storage"
+version.workspace = true
+edition.workspace = true
+
+[dependencies]
+lono-core.workspace = true
