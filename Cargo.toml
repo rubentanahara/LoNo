@@ -9,3 +9,5 @@ version = "0.1.0"
 [workspace.dependencies]
 lono-core = { path = "crates/core" }
 lono-storage = { path = "crates/storage" }
+time = "0.3.48"
+uuid = { version = "1.27.0", features = ["v4"] }
