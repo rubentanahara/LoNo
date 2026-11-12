@@ -107,27 +107,27 @@ A task or phase that fails any item is not done. Cut scope before relaxing this 
 ### Phase 0 — Foundations
 **Goal:** working workspace with CI.
 **Work:**
-- [ ] Install Rust toolchain, `cargo-nextest`, `just`.
-  - [ ] Install `rustup` and stable toolchain.
-  - [ ] Add `rustfmt` and `clippy` components.
-  - [ ] Install `cargo-nextest` and `just`.
-  - [ ] *Check:* `rustc --version`, `cargo nextest --version`, `just --version` succeed.
+- [x] Install Rust toolchain, `cargo-nextest`, `just`.
+  - [x] Install `rustup` and stable toolchain.
+  - [x] Add `rustfmt` and `clippy` components.
+  - [x] Install `cargo-nextest` and `just`.
+  - [x] *Check:* `rustc --version`, `cargo nextest --version`, `just --version` succeed.
 - [ ] Create workspace with `core`, `storage`, `app` crates.
-  - [ ] Write root `Cargo.toml` with `[workspace]` and shared dependency versions.
-  - [ ] Create `core` (lib), `storage` (lib) and `app` (bin).
-  - [ ] Set dependency direction: `app` to `storage` to `core`.
+  - [x] Write root `Cargo.toml` with `[workspace]` and shared dependency versions.
+  - [x] Create `core` (lib), `storage` (lib) and `app` (bin).
+  - [x] Set dependency direction: `app` to `storage` to `core`.
   - [ ] Add one failing test in `core`, then make it pass.
-  - [ ] *Check:* `cargo metadata` lists three members; `cargo build` passes.
-- [ ] Add `rust-toolchain.toml`, `justfile` (`test`, `lint`, `run`).
-  - [ ] Pin toolchain channel and components in `rust-toolchain.toml`.
-  - [ ] Write `just test`, `just lint`, `just run` recipes.
-  - [ ] Add `.gitignore` and `rustfmt.toml` if needed.
-  - [ ] *Check:* `just test` and `just lint` exit 0.
-- [ ] Add CI: `cargo fmt --check`, `clippy -D warnings`, `nextest`.
-  - [ ] Write the workflow file in `.github/workflows/ci.yml`.
-  - [ ] Cache cargo registry and `target`.
-  - [ ] Run the same commands as `just lint` and `just test`.
-  - [ ] *Check:* run the same three commands locally; all pass. A deliberate fmt error fails them.
+  - [x] *Check:* `cargo metadata` lists three members; `cargo build` passes.
+- [x] Add `rust-toolchain.toml`, `justfile` (`test`, `lint`, `run`).
+  - [x] Pin toolchain channel and components in `rust-toolchain.toml`.
+  - [x] Write `just test`, `just lint`, `just run` recipes.
+  - [x] Add `.gitignore` and `rustfmt.toml` if needed.
+  - [x] *Check:* `just test` and `just lint` exit 0.
+- [x] Add CI: `cargo fmt --check`, `clippy -D warnings`, `nextest`.
+  - [x] Write the workflow file in `.github/workflows/ci.yml`.
+  - [x] Cache cargo registry and `target`.
+  - [x] Run the same commands as `just lint` and `just test`.
+  - [x] *Check:* run the same three commands locally; all pass. A deliberate fmt error fails them.
 
 **Phase checks:** `cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo nextest run`. `core` has no dependency on `storage` or `app` (`cargo tree -p core`).
 **Exit criteria:** CI is green on an empty workspace with one passing test.
