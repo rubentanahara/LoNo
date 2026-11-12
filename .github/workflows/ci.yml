@@ -8,7 +8,6 @@ jobs:
         with:
           fetch-depth: 0
       - uses: cocogitto/cocogitto-action@v3
-
   ci:
     runs-on: ubuntu-latest
     steps:
