@@ -2,6 +2,10 @@ pub fn add(left: u64, right: u64) -> u64 {
     left + right
 }
 
+pub fn double(value: u64) -> u64 {
+    value * 2
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

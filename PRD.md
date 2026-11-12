@@ -112,11 +112,11 @@ A task or phase that fails any item is not done. Cut scope before relaxing this 
   - [x] Add `rustfmt` and `clippy` components.
   - [x] Install `cargo-nextest` and `just`.
   - [x] *Check:* `rustc --version`, `cargo nextest --version`, `just --version` succeed.
-- [ ] Create workspace with `core`, `storage`, `app` crates.
+- [x] Create workspace with `core`, `storage`, `app` crates.
   - [x] Write root `Cargo.toml` with `[workspace]` and shared dependency versions.
   - [x] Create `core` (lib), `storage` (lib) and `app` (bin).
   - [x] Set dependency direction: `app` to `storage` to `core`.
-  - [ ] Add one failing test in `core`, then make it pass.
+  - [x] Add one failing test in `core`, then make it pass.
   - [x] *Check:* `cargo metadata` lists three members; `cargo build` passes.
 - [x] Add `rust-toolchain.toml`, `justfile` (`test`, `lint`, `run`).
   - [x] Pin toolchain channel and components in `rust-toolchain.toml`.
