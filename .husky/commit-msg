@@ -1,0 +1,25 @@
+#!/bin/sh
+
+commit_msg=$(head -n1 "$1")
+pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(.+\))?!?: .{1,88}$'
+
+if ! echo "$commit_msg" | grep -qE "$pattern"; then
+  echo "Commit message must follow Conventional Commits:"
+  echo "  <type>(<scope>)?: <description>"
+  echo "  types: feat fix docs style refactor perf test build ci chore revert"
+  echo ""
+  echo "Got: $commit_msg"
+  exit 1
+fi
+
+agent_attribution='^(co-authored-by:.*(claude|codex|copilot|anthropic\.com|openai\.com)|.*generated (with|by) \[(claude|codex|copilot))'
+
+message_body=$(sed '/^# -* >8 -*$/,$d' "$1" | grep -v '^#')
+
+if echo "$message_body" | grep -qiE "$agent_attribution"; then
+  echo "Commit message must not name an AI agent. Remove:"
+  echo "$message_body" | grep -iE "$agent_attribution"
+  exit 1
+fi
+
+sh "$(git rev-parse --show-toplevel)/scripts/agent/tdd-gate.sh" "$1" || exit 1

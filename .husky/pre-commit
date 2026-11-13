@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if command -v gitleaks > /dev/null; then
+  gitleaks protect --staged --redact || exit 1
+else
+  echo "WARNING: gitleaks is not installed; staged changes were not scanned for secrets." >&2
+fi
