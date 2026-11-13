@@ -1,0 +1,46 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(make *)",
+      "Bash(scripts/agent/feature.sh *)",
+      "Bash(git status *)",
+      "Bash(git diff *)",
+      "Bash(git log *)",
+      "Bash(git show *)"
+    ],
+    "deny": [
+      "Bash(git push origin main)",
+      "Bash(git push origin main *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Edit(./feature_list.json)",
+      "Read(./.env)",
+      "Read(./.env.*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/scripts/agent/stop-gate.sh\"",
+            "timeout": 300
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$(git rev-parse --show-toplevel)/scripts/agent/session-start.sh\"",
+            "timeout": 300
+          }
+        ]
+      }
+    ]
+  }
+}
