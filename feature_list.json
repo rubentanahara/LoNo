@@ -1,0 +1,11 @@
+{
+  "project_title": "LoNo",
+  "priority_legend": {
+    "P0": "Blocks everything else",
+    "P1": "Core scope",
+    "P2": "Nice to have"
+  },
+  "shared": [],
+  "sprints": [],
+  "epics": []
+}
